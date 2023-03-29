@@ -1,7 +1,6 @@
 package br.org;
 
 import br.org.parse.JsonParser;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 import java.net.URI;
@@ -15,12 +14,12 @@ public class ApplicationMain {
 
     public static void main(String[] args) throws IOException, InterruptedException, IllegalAccessException {
 
-        //fazer conexão
+        //connection
         String url = "https://api.mocki.io/v2/549a5d8b";
-        URI endereco = URI.create(url);
+        URI path = URI.create(url);
 
         var client = HttpClient.newHttpClient();
-        var request = HttpRequest.newBuilder(endereco).GET().build();
+        var request = HttpRequest.newBuilder(path).GET().build();
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         String body = response.body();
